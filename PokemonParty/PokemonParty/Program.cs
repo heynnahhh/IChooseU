@@ -87,7 +87,8 @@ namespace PokemonParty.Net
                 int counter = 1;
                 List<string> typeList = new List<string>();
                 string validInput = String.Empty;
-
+                
+                //TO DO: Dynamic utility for input validations
                 while (counter <= typeCount)
                 {
                     Console.Write("\r\nInput Pokemon type {0}: ", counter);
