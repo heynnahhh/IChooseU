@@ -45,6 +45,10 @@ namespace PokemonParty.Net
                     {
                         shouldCreateTeam = Utils.Confirmation("\r\nDo you wish to generate another team? [y/n] ");
                     }
+                    else
+                    {
+                        shouldCreateTeam = false;
+                    }
                 }
                 else
                 {
