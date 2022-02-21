@@ -66,10 +66,17 @@ namespace PokemonParty.Net.Utilities
             return isConfirmed;
         }
 
-        public static bool RegexValidation(string input)
+        public static string RegexValidation(string input)
         {
-            Regex regexValidation = new Regex(@"^(dark)$");
-            return regexValidation.IsMatch(input);
+            input = input.ToLower();
+            string[] pokemonTypes = { "dark","normal","fire","fighting","water","flying","grass","poison","electric","ground", "psychic", "rock", "ice", "bug", "dragon", "ghost", "steel", "fairy" };
+            string regExPattern = String.Join("|", pokemonTypes);
+
+            Regex regexValidation = new Regex(@"^("+regExPattern+")$");
+
+            string validInput = (regexValidation.IsMatch(input)) ? input : "";
+
+            return validInput;
         }
 
         #endregion

@@ -11,6 +11,7 @@ namespace PokemonParty.Net
         /// </summary>
         static async Task Main(string[] args)
         {
+            //TO DO: Save in text file and create utility to read from file
             Console.WriteLine("Welcome to IChooseU: A Pokemon Team Generator! \r\n" +
                 "This app shall give you a Team of 5 random Pokemons depending on the type you want to choose.");
 
@@ -67,6 +68,7 @@ namespace PokemonParty.Net
         /// </summary>
         private static async Task<string> OnStart()
         {
+            //TO DO: Get types from pokeapi
             Console.WriteLine("There are currently 18 types of Pokemon. \r\n" +
                 "Normal, Fire, Fighting, Water, Flying, Grass, Poison, Electric, Ground \r\n" +
                 "Psychic, Rock, Ice, Bug, Dragon, Ghost, Dark, Steel and Fairy...");
@@ -84,12 +86,21 @@ namespace PokemonParty.Net
             {
                 int counter = 1;
                 List<string> typeList = new List<string>();
+                string validInput = String.Empty;
 
                 while (counter <= typeCount)
                 {
                     Console.Write("\r\nInput Pokemon type {0}: ", counter);
-                    typeList.Add(Console.ReadLine()); //input validation here
-                    counter++;
+                    validInput = Utils.RegexValidation(Console.ReadLine());
+                    if(validInput != string.Empty)
+                    {
+                        typeList.Add(validInput); //input validation here
+                        counter++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please choose a valid type from the list");
+                    }
                 }
 
                 if (typeList.Count > 0)
